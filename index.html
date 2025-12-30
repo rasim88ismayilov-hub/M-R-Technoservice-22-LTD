@@ -163,6 +163,11 @@ header#home p {
     box-shadow: 0 6px 18px rgba(0,0,0,0.4);
 }
 
+/* MOBILE FIX: Price link behaves like button */
+.nav-links a.nav-btn {
+    display: inline-block;
+}
+
 /* MEDIA QUERIES - MOBILE */
 @media (max-width: 768px) {
     .nav-links {
@@ -173,6 +178,11 @@ header#home p {
     }
     .nav-links.show {
         display: flex;
+    }
+    .nav-links button,
+    .nav-links a.nav-btn { /* bütün button və a alt-alta */
+        width: 100%;
+        text-align: center;
     }
     .hamburger { display: block; }
     header#home h1 { font-size: 2em; }
@@ -193,7 +203,7 @@ header#home p {
         <button class="nav-btn" data-section="services">Services</button>
         <a href="M%26R%20TechnoService%2022%20LTD%20Hikvision%20price%20list.pdf.pdf" target="_blank" class="nav-btn">Price</a>
         <button class="nav-btn" data-section="contact">Contact</button>
-        <button class="nav-btn" data-section="terms">Terms & Conditions</button> <!-- Yeni düymə -->
+        <button class="nav-btn" data-section="terms">Terms & Conditions</button>
     </div>
 </div>
 
