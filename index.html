@@ -13,7 +13,6 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
     font-family: Arial, sans-serif;
     background-color: #000;
     color: #e0e0e0;
@@ -26,11 +25,11 @@ html, body {
     padding: 10px 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Logo solda, düymələr sağda */
+    justify-content: space-between;
     position: fixed;
     top: 10px;
-    left: 20px;
-    right: 20px;
+    left: 0;
+    right: 0;
     z-index: 100;
     flex-wrap: wrap;
 }
@@ -45,7 +44,7 @@ html, body {
 
 .nav-links {
     display: flex;
-    gap: 8px; /* Düymələr arası boşluq */
+    gap: 8px;
 }
 
 .nav-btn {
@@ -73,17 +72,25 @@ html, body {
     box-shadow: 0 0 10px yellow;
 }
 
+/* HAMBURGER */
+.hamburger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+}
+
 /* HEADER ONLY HOME */
 header#home {
     background-image: url('https://www.hi-systems.at/images/userfiles/image/Hikvision-Video%C3%BCberwachung-Netzwerk-Kameras.jpg');
     background-position: center;
     background-size: cover;
     width: 100%;
-    height: 100vh; /* ekran boyu */
+    height: 100vh;
     
     display: flex;
-    justify-content: center;  /* vertikal ortalama */
-    align-items: center;      /* horizontal ortalama */
+    justify-content: center;
+    align-items: center;
     text-align: center;
     
     color: #99ff99;
@@ -105,11 +112,11 @@ header#home p {
     margin-top: 10px;
 }
 
-/* PAGE SECTIONS (ABOUT, CATALOG, SERVICES, CONTACT) */
+/* PAGE SECTIONS */
 .page-section {
     display: none;
     padding: 50px 20px;
-    background: none; /* şəkil yoxdur */
+    background: none;
 }
 
 .page-section.active {
@@ -132,7 +139,7 @@ header#home p {
     bottom: 20px;
     right: 20px;
     display: flex;
-    gap: 10px; /* İkonlar arasında boşluq */
+    gap: 10px;
     z-index: 999;
 }
 
@@ -148,15 +155,8 @@ header#home p {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.whatsapp-btn {
-    background-color: #25D366;
-    color: white;
-}
-
-.email-btn {
-    background-color: #00c851;
-    color: white;
-}
+.whatsapp-btn { background-color: #25D366; color: white; }
+.email-btn { background-color: #00c851; color: white; }
 
 .whatsapp-btn:hover, .email-btn:hover {
     transform: scale(1.05);
@@ -165,24 +165,18 @@ header#home p {
 
 /* MEDIA QUERIES - MOBILE */
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        gap: 5px;
-    }
     .nav-links {
         flex-direction: column;
+        display: none; /* hamburger üçün gizlədilir */
         width: 100%;
+        margin-top: 10px;
     }
-    .nav-btn {
-        width: 100%;
-        text-align: center;
+    .nav-links.show {
+        display: flex;
     }
-    header#home h1 {
-        font-size: 2em;
-    }
-    header#home p {
-        font-size: 1em;
-    }
+    .hamburger { display: block; }
+    header#home h1 { font-size: 2em; }
+    header#home p { font-size: 1em; }
 }
 </style>
 </head>
@@ -191,6 +185,7 @@ header#home p {
 <!-- NAVBAR -->
 <div class="navbar">
     <div class="nav-logo">M&R Technoservice 22 LTD</div>
+    <div class="hamburger"><i class="fas fa-bars"></i></div>
     <div class="nav-links">
         <button class="nav-btn active" data-section="home">Home</button>
         <button class="nav-btn" data-section="about">About</button>
@@ -201,7 +196,7 @@ header#home p {
     </div>
 </div>
 
-<!-- HEADER ONLY HOME -->
+<!-- HEADER -->
 <header id="home" class="page-section active">
     <h1>Welcome to Our IT, Restaurant & Security Solutions</h1>
     <p>Reliable products and professional support for your business</p>
@@ -211,8 +206,7 @@ header#home p {
 <div id="about" class="page-section">
     <div class="content-box">
         <h2>About Us</h2>
-        <p>M&R Technoservice 22 LTD, established in 2025, specializes in IT security systems. Our core business includes providing high-quality cybersecurity solutions, network security, and system monitoring services. Despite being a newly established company, our professional team ensures reliable products and prompt support to maintain uninterrupted operations for our clients.</p>
-        <p>Our mission is to provide high-quality technical services, reliable products, and sustainable solutions. We are committed to delivering professional support and expert services to our clients.</p>
+        <p>M&R Technoservice 22 LTD, established in 2025, specializes in IT security systems...</p>
     </div>
 </div>
 
@@ -224,18 +218,6 @@ header#home p {
             <li>Restaurant Systems</li>
             <li>Security Systems</li>
             <li>Network Solutions and Accessories</li>
-            <li>Software and Applications</li>
-            <li>Hardware Components</li>
-            <li>Technical Support Services</li>
-            <li>Security and Monitoring Equipment, including:
-                <ul>
-                    <li>CCTV Cameras and Recorders</li>
-                    <li>Alarm Systems and Sensors</li>
-                    <li>Access Control Systems</li>
-                    <li>POS and Restaurant Management Systems</li>
-                    <li>Networking Cables and Switches</li>
-                </ul>
-            </li>
         </ul>
     </div>
 </div>
@@ -244,12 +226,8 @@ header#home p {
     <div class="content-box">
         <h2>Services</h2>
         <ul>
-            <li>Supply, Sales, and Installation of IT, Restaurant, and Security Systems</li>
-            <li>Diagnostics, Inspection, and Maintenance of IT, Restaurant, and Security Equipment</li>
-            <li>Service and Technical Support for IT, Restaurant, and Security Systems</li>
-            <li>Sale and Prompt Delivery of Spare Parts for IT, Restaurant, and Security Systems</li>
-            <li>Planned Maintenance and Emergency Support for IT, Restaurant, and Security Systems</li>
-            <li>Technical Consultation and Solutions Tailored to Customer Requirements</li>
+            <li>Supply, Sales, Installation</li>
+            <li>Diagnostics, Maintenance</li>
         </ul>
     </div>
 </div>
@@ -264,4 +242,38 @@ header#home p {
     </div>
 </div>
 
-<!-- FLOATING BUT
+<!-- FLOATING BUTTONS -->
+<div class="floating-buttons">
+    <a href="https://wa.me/447849166141" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    <a href="mailto:mr.techno.service.22@gmail.com" target="_blank" class="email-btn"><i class="fas fa-envelope"></i> Email</a>
+</div>
+
+<!-- SCRIPT -->
+<script>
+const sections = document.querySelectorAll('.page-section');
+const navButtons = document.querySelectorAll('.nav-btn[data-section]');
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+navButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        navButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const section = btn.getAttribute('data-section');
+        sections.forEach(sec => {
+            sec.classList.remove('active');
+            if(sec.id === section) sec.classList.add('active');
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if(navLinks.classList.contains('show')) navLinks.classList.remove('show');
+    });
+});
+
+// Hamburger toggle
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+});
+</script>
+
+</body>
+</html>
