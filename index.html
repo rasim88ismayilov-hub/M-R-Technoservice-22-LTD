@@ -25,11 +25,10 @@ html, body {
     padding: 10px 20px;
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* sola sürüşdürdük */
     gap: 6px;
     position: fixed;
     top: 10px;
-    left: 10px;
+    left: 20px; /* bir az sağa */
     z-index: 100;
 }
 
@@ -39,14 +38,14 @@ html, body {
     border: 2px solid cyan;
     padding: 6px 12px;
     border-radius: 10px;
-    margin-right: 20px;
+    margin-right: 15px;
 }
 
 .nav-btn {
-    background-color: #004d00; /* tünd yaşıl */
+    background-color: rgba(0,0,0,0.8);
     color: white;
-    border: none;
-    border-radius: 8px;
+    border: 2px solid cyan;
+    border-radius: 10px;
     padding: 6px 12px;
     font-weight: bold;
     cursor: pointer;
@@ -54,9 +53,16 @@ html, body {
 }
 
 .nav-btn:hover {
-    background-color: #00c851;
-    color: white;
+    background-color: cyan;
+    color: black;
     transform: scale(1.05);
+}
+
+.nav-btn.active {
+    background-color: black;
+    color: white;
+    border-color: yellow;
+    box-shadow: 0 0 10px yellow;
 }
 
 /* HEADER */
@@ -123,7 +129,7 @@ header p {
 }
 
 .email-btn {
-    right: 150px; /* WhatsApp yanında olmasın */
+    right: 150px;
     background-color: #00c851;
 }
 
@@ -131,7 +137,6 @@ header p {
     transform: scale(1.05);
     box-shadow: 0 6px 18px rgba(0,0,0,0.4);
 }
-
 </style>
 </head>
 <body>
@@ -139,105 +144,3 @@ header p {
 <!-- NAVBAR -->
 <div class="navbar">
     <div class="nav-logo">M&R Technoservice 22 LTD</div>
-    <button class="nav-btn active" data-section="home">Home</button>
-    <button class="nav-btn" data-section="about">About</button>
-    <button class="nav-btn" data-section="catalog">Catalog</button>
-    <button class="nav-btn" data-section="services">Services</button>
-    <a href="M%26R%20TechnoService%2022%20LTD%20Hikvision%20price%20list.pdf.pdf" target="_blank" class="nav-btn">Price</a>
-    <button class="nav-btn" data-section="contact">Contact</button>
-</div>
-
-<!-- HEADER -->
-<header>
-    <h1>Welcome to Our IT, Restaurant & Security Solutions</h1>
-    <p>Reliable products and professional support for your business</p>
-</header>
-
-<!-- PAGE SECTIONS -->
-<div id="home" class="page-section active">
-    <!-- Home üçün boş, şəkil header-dədir -->
-</div>
-
-<div id="about" class="page-section">
-    <div class="content-box">
-        <h2>About Us</h2>
-        <p>M&R Technoservice 22 LTD, established in 2025, specializes in IT security systems. Our core business includes providing high-quality cybersecurity solutions, network security, and system monitoring services. Despite being a newly established company, our professional team ensures reliable products and prompt support to maintain uninterrupted operations for our clients.</p>
-        <p>Our mission is to provide high-quality technical services, reliable products, and sustainable solutions. We are committed to delivering professional support and expert services to our clients.</p>
-    </div>
-</div>
-
-<div id="catalog" class="page-section">
-    <div class="content-box">
-        <h2>Catalog</h2>
-        <p>Main Product Categories:</p>
-        <ul>
-            <li>IT Systems</li>
-            <li>Restaurant Systems</li>
-            <li>Security Systems</li>
-            <li>Network Solutions and Accessories</li>
-            <li>Software and Applications</li>
-            <li>Hardware Components</li>
-            <li>Technical Support Services</li>
-            <li>Security and Monitoring Equipment, including:
-                <ul>
-                    <li>CCTV Cameras and Recorders</li>
-                    <li>Alarm Systems and Sensors</li>
-                    <li>Access Control Systems</li>
-                    <li>POS and Restaurant Management Systems</li>
-                    <li>Networking Cables and Switches</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</div>
-
-<div id="services" class="page-section">
-    <div class="content-box">
-        <h2>Services</h2>
-        <ul>
-            <li>Supply, Sales, and Installation of IT, Restaurant, and Security Systems</li>
-            <li>Diagnostics, Inspection, and Maintenance of IT, Restaurant, and Security Equipment</li>
-            <li>Service and Technical Support for IT, Restaurant, and Security Systems</li>
-            <li>Sale and Prompt Delivery of Spare Parts for IT, Restaurant, and Security Systems</li>
-            <li>Planned Maintenance and Emergency Support for IT, Restaurant, and Security Systems</li>
-            <li>Technical Consultation and Solutions Tailored to Customer Requirements</li>
-        </ul>
-    </div>
-</div>
-
-<div id="contact" class="page-section">
-    <div class="content-box">
-        <h2>Contact</h2>
-        <p><strong>Address:</strong> 14 Pinewood Avenue, Aberdeen AB15 8NB, Scotland, UK</p>
-        <p><strong>Phone:</strong> 01224 5477923</p>
-        <p><strong>Email:</strong> mr.techno.service.22@gmail.com</p>
-        <p><strong>Working Hours:</strong> Monday - Friday: 9:00 AM to 6:00 PM</p>
-    </div>
-</div>
-
-<!-- FLOATING BUTTONS -->
-<a href="https://wa.me/447849166141" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-<a href="mailto:mr.techno.service.22@gmail.com" target="_blank" class="email-btn"><i class="fas fa-envelope"></i> Email</a>
-
-<!-- SCRIPT FOR NAVIGATION -->
-<script>
-const sections = document.querySelectorAll('.page-section');
-const navButtons = document.querySelectorAll('.nav-btn[data-section]');
-
-navButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        navButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const section = btn.getAttribute('data-section');
-        sections.forEach(sec => {
-            if(sec.id === section) sec.classList.add('active');
-            else sec.classList.remove('active');
-        });
-        // Scroll to top when section changes
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-});
-</script>
-
-</body>
-</html>
