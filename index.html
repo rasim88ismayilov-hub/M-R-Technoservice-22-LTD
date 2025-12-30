@@ -73,8 +73,8 @@ html, body {
     box-shadow: 0 0 10px yellow;
 }
 
-/* HEADER */
-header.page-section {
+/* HEADER ONLY HOME */
+header#home {
     background-image: url('https://www.hi-systems.at/images/userfiles/image/Hikvision-Video%C3%BCberwachung-Netzwerk-Kameras.jpg');
     background-position: center;
     background-size: cover;
@@ -89,26 +89,27 @@ header.page-section {
     color: #99ff99;
     flex-direction: column;
     
-    padding: 0; /* yuxarıdan boşluğu silirik */
+    padding: 0;
     box-sizing: border-box;
 }
 
-header h1 {
+header#home h1 {
     font-size: 2.5em;
     margin: 0;
     text-shadow: 0 0 10px black;
 }
 
-header p {
+header#home p {
     font-size: 1.2em;
     text-shadow: 0 0 6px black;
     margin-top: 10px;
 }
 
-/* PAGE SECTIONS */
+/* PAGE SECTIONS (ABOUT, CATALOG, SERVICES, CONTACT) */
 .page-section {
     display: none;
     padding: 50px 20px;
+    background: none; /* şəkil yoxdur */
 }
 
 .page-section.active {
@@ -176,10 +177,10 @@ header p {
         width: 100%;
         text-align: center;
     }
-    header h1 {
+    header#home h1 {
         font-size: 2em;
     }
-    header p {
+    header#home p {
         font-size: 1em;
     }
 }
@@ -200,7 +201,7 @@ header p {
     </div>
 </div>
 
-<!-- HEADER -->
+<!-- HEADER ONLY HOME -->
 <header id="home" class="page-section active">
     <h1>Welcome to Our IT, Restaurant & Security Solutions</h1>
     <p>Reliable products and professional support for your business</p>
@@ -263,30 +264,4 @@ header p {
     </div>
 </div>
 
-<!-- FLOATING BUTTONS -->
-<div class="floating-buttons">
-    <a href="https://wa.me/447849166141" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-    <a href="mailto:mr.techno.service.22@gmail.com" target="_blank" class="email-btn"><i class="fas fa-envelope"></i> Email</a>
-</div>
-
-<!-- SCRIPT FOR NAVIGATION -->
-<script>
-const sections = document.querySelectorAll('.page-section');
-const navButtons = document.querySelectorAll('.nav-btn[data-section]');
-
-navButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        navButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const section = btn.getAttribute('data-section');
-        sections.forEach(sec => {
-            if(sec.id === section) sec.classList.add('active');
-            else sec.classList.remove('active');
-        });
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-});
-</script>
-
-</body>
-</html>
+<!-- FLOATING BUT
