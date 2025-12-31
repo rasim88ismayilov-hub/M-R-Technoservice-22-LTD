@@ -194,7 +194,7 @@ header#home p { font-size: 1.2em; text-shadow: 0 0 6px black; margin-top: 10px; 
 <div id="price" class="page-section">
     <div class="content-box">
         <h2>Price List</h2>
-        <p><a href="M%26R%20TechnoService%2022%20LTD%20Hikvision%20price%20list.pdf.pdf" target="_blank" style="color: cyan;">Download Price List PDF</a></p>
+        <p>Click the Price button in the menu to open the PDF directly.</p>
     </div>
 </div>
 
@@ -258,8 +258,23 @@ navButtons.forEach(btn => {
         navButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const section = btn.getAttribute('data-section');
+
+        // Price düyməsinə kliklədikdə PDF açılır
+        if(section === 'price') {
+            window.open('M%26R%20TechnoService%2022%20LTD%20Hikvision%20price%20list.pdf.pdf', '_blank');
+            return;
+        }
+
         sections.forEach(sec => sec.classList.remove('active'));
         if(section) document.getElementById(section).classList.add('active');
+
+        // Home fonu yalnız Home-da görünür
+        if(section === 'home') {
+            document.getElementById('home').style.display = 'flex';
+        } else {
+            document.getElementById('home').style.display = 'none';
+        }
+
         window.scrollTo({ top: 0, behavior: 'smooth' });
         navLinks.classList.remove('show');
     });
