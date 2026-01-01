@@ -1,76 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Specialists Certificates</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M&R IT Security Solutions</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<style>
+html, body {
+    margin: 0; padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000; color: #e0e0e0;
+    overflow-x: hidden;
+}
+/* NAVBAR */
+.navbar {
+    background-color: rgba(0,0,0,0.8);
+    padding: 10px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    flex-wrap: wrap;
+}
+.nav-logo { color: white; font-weight: bold; border: 2px solid cyan; padding: 6px 12px; border-radius: 10px; }
+.nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+.nav-btn {
+    display: inline-flex; justify-content: center; align-items: center; gap: 4px;
+    background-color: rgba(0,0,0,0.8); color: white; border: 2px solid cyan;
+    border-radius: 10px; padding: 6px 12px; font-weight: bold; cursor: pointer;
+    font-size: 13px; text-decoration: none;
+}
+.nav-btn:hover { background-color: cyan; color: black; transform: scale(1.05); }
+.nav-btn.active { background-color: black; color: white; border-color: yellow; box-shadow: 0 0 10px yellow; }
+.hamburger { display: none; font-size: 24px; cursor: pointer; color: white; }
 
-    <!-- Font Awesome (ikon üçün) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+/* HEADER */
+header#home {
+    background-image: url('https://www.hi-systems.at/images/userfiles/image/Hikvision-Video%C3%BCberwachung-Netzwerk-Kameras.jpg');
+    background-position: center top; 
+    background-size: cover;
+    width: 100%; height: 100vh;
+    display: flex; justify-content: center; align-items: center;
+    text-align: center; color: #99ff99;
+    flex-direction: column;
+}
+header#home h1 { font-size: 2.5em; margin: 0; text-shadow: 0 0 10px black; }
+header#home p { font-size: 1.2em; text-shadow: 0 0 6px black; margin-top: 10px; }
 
-    <style>
-        body{
-            background:#0f172a;
-            font-family: Arial, sans-serif;
-        }
+/* PAGE SECTIONS */
+.page-section { display: none; padding: 50px 20px; }
+.page-section.active { display: block; }
+.content-box {
+    max-width: 1000px;
+    margin: 0 auto 30px auto;
+    background-color: rgba(0,20,20,0.7);
+    padding: 30px;
+    border-radius: 12px;
+    font-size: 18px;
+    line-height: 1.8;
+}
 
-        .certificate-wrapper{
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            margin:50px 0;
-        }
+/* CERTIFICATE BUTTON */
+.certificate-wrapper{
+    text-align:center;
+    margin-top:30px;
+}
+.certificate-btn{
+    background:#000;
+    color:#fff;
+    border:2px solid cyan;
+    padding:14px 30px;
+    border-radius:14px;
+    font-size:16px;
+    font-weight:bold;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    cursor:pointer;
+    text-decoration:none;
+    transition:0.3s;
+}
+.certificate-btn i{ color:cyan; }
+.certificate-btn:hover{
+    background:cyan;
+    color:#000;
+    box-shadow:0 0 15px cyan;
+    transform:scale(1.05);
+}
+.certificate-btn:hover i{ color:#000; }
 
-        .certificate-btn{
-            background-color: rgba(0,0,0,0.9);
-            color: #ffffff;
-            border: 2px solid cyan;
-            padding: 16px 34px;
-            font-size: 17px;
-            font-weight: bold;
-            border-radius: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
+/* PRODUCTS */
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+.product{
+    background:#111;
+    border-radius:12px;
+    padding:10px;
+}
+.product img{ width:100%; height:210px; object-fit:contain; }
+.product h3{ text-align:center; color:#fff; }
+.product p{ text-align:center; color:#ccc; font-size:14px; }
 
-        .certificate-btn i{
-            color: cyan;
-            font-size: 20px;
-        }
+/* FLOATING */
+.floating-buttons{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    display:flex;
+    gap:10px;
+}
+.whatsapp-btn,.email-btn{
+    padding:12px 18px;
+    border-radius:50px;
+    color:#fff;
+    text-decoration:none;
+}
+.whatsapp-btn{ background:#25D366; }
+.email-btn{ background:#00c851; }
 
-        .certificate-btn:hover{
-            background-color: cyan;
-            color: #000;
-            box-shadow: 0 0 20px cyan;
-            transform: scale(1.06);
-        }
-
-        .certificate-btn:hover i{
-            color: #000;
-        }
-
-        @media(max-width:768px){
-            .certificate-btn{
-                font-size:15px;
-                padding:14px 26px;
-            }
-        }
-    </style>
+@media(max-width:768px){
+    .hamburger{ display:block; }
+    .nav-links{ display:none; flex-direction:column; width:100%; }
+    .nav-links.show{ display:flex; }
+}
+</style>
 </head>
+
 <body>
 
-    <!-- CERTIFICATES BUTTON -->
-    <div class="certificate-wrapper">
-        <a class="certificate-btn"
-           href="https://raw.githubusercontent.com/rasim88ismayilov-hub/M-R-Technoservice-22-LTD/main/All%20certificate.pdf"
-           target="_blank">
-            <i class="fas fa-certificate"></i>
-            Specialists Certificates
-        </a>
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="nav-logo">M&R Technoservice 22 LTD</div>
+    <div class="hamburger"><i class="fas fa-bars"></i></div>
+    <div class="nav-links">
+        <button class="nav-btn active" data-section="home">Home</button>
+        <button class="nav-btn" data-section="about">About</button>
+        <button class="nav-btn" data-section="catalog">Products</button>
+        <button class="nav-btn" data-section="services">Services</button>
+        <button class="nav-btn" data-section="price">Price</button>
+        <button class="nav-btn" data-section="contact">Contact</button>
+        <button class="nav-btn" data-section="terms">Terms & Conditions</button>
     </div>
+</div>
+
+<header id="home" class="page-section active">
+    <h1>Welcome to Our IT, Restaurant & Security Solutions</h1>
+    <p>Reliable products and professional support for your business</p>
+</header>
+
+<!-- ABOUT -->
+<div id="about" class="page-section">
+    <div class="content-box">
+        <h2>About Us</h2>
+        <p>M&R Technoservice 22 LTD, established in 2025, provides certified IT, security and restaurant system solutions.</p>
+
+        <!-- CERTIFICATES BUTTON -->
+        <div class="certificate-wrapper">
+            <a class="certificate-btn"
+               href="https://raw.githubusercontent.com/rasim88ismayilov-hub/M-R-Technoservice-22-LTD/main/All%20certificate.pdf"
+               target="_blank">
+                <i class="fas fa-certificate"></i>
+                Specialists Certificates
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- (Qalan hissələr səndə verdiyin kimi dəyişməz qalır) -->
+
+<script>
+const sections=document.querySelectorAll('.page-section');
+const navButtons=document.querySelectorAll('.nav-btn');
+const hamburger=document.querySelector('.hamburger');
+const navLinks=document.querySelector('.nav-links');
+
+navButtons.forEach(btn=>{
+    btn.addEventListener('click',()=>{
+        navButtons.forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const section=btn.dataset.section;
+
+        if(section==='price'){
+            window.open('M%26R%20TechnoService%2022%20LTD%20Hikvision%20price%20list.pdf.pdf','_blank');
+            return;
+        }
+
+        sections.forEach(s=>s.classList.remove('active'));
+        document.getElementById(section).classList.add('active');
+        document.getElementById('home').style.display=section==='home'?'flex':'none';
+        navLinks.classList.remove('show');
+    });
+});
+hamburger.onclick=()=>navLinks.classList.toggle('show');
+</script>
 
 </body>
 </html>
